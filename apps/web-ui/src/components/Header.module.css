@@ -6,7 +6,14 @@
   max-height: var(--header-height);
   z-index: var(--header-z-index);
   transform: translateY(0);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 240ms ease;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    transition: none;
+  }
 }
 
 .header.hidden {

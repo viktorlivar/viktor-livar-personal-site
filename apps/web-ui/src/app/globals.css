@@ -1,7 +1,18 @@
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --header-height: 74px;
+  --background: #f7f7f5;
+  --surface: #ffffff;
+  --surface-raised: #efefec;
+  --foreground: #181818;
+  --foreground-muted: #686868;
+  --accent: #d85f24;
+  --focus-color: #0b6fad;
+  --border-color: rgba(24, 24, 24, 0.12);
+  --border-color-strong: rgba(24, 24, 24, 0.28);
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+  --toad-shadow: rgba(0, 0, 0, 0.58);
+  --header-height: 64px;
+  --footer-height: 7rem;
+  --content-width: 800px;
   --border-radius: 4px;
   --min-width: 320px;
   --spacing: 0.5rem;
@@ -17,11 +28,27 @@
   --secondary-color: #c04a13;
   --secondary-color-light: #c77802;
 
-  --dialog-border-color: rgba(255, 255, 255, 0.199);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --background: #111210;
+  --surface: #191a18;
+  --surface-raised: #20211f;
+  --foreground: #f0f0eb;
+  --foreground-muted: #aaa9a2;
+  --accent: #ff874f;
+  --focus-color: #62b7e9;
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-color-strong: rgba(255, 255, 255, 0.28);
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+  --toad-shadow: rgba(0, 0, 0, 0.78);
+  color-scheme: dark;
 }
 
 html,
 body {
+  min-width: var(--min-width);
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -32,9 +59,12 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
 @media (max-width: 319.5px) {
@@ -54,6 +84,38 @@ a {
   text-decoration: none;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 p {
   line-height: 1.8;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    transition: none;
+  }
 }

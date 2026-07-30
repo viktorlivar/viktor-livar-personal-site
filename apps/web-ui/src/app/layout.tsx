@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 import React from 'react';
+import PreferencesProvider from '@/components/PreferencesProvider';
 import './globals.css';
 
 const geistSans = Geist({
@@ -55,6 +56,19 @@ export const metadata: Metadata = {
 };
 
 const JS_IS_ENABLED_CLASS = 'js-is-enabled';
+const PREFERENCES_SCRIPT = `
+  document.documentElement.classList.add('${JS_IS_ENABLED_CLASS}');
+  try {
+    const storedTheme = localStorage.getItem('viktor-livar-theme');
+    const theme = storedTheme === 'light' || storedTheme === 'dark'
+      ? storedTheme
+      : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const pathLanguage = location.pathname.split('/')[1];
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    document.documentElement.lang = pathLanguage === 'uk' ? 'uk' : 'en';
+  } catch (_) {}
+`;
 
 export default function RootLayout({
   children,
@@ -62,14 +76,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): React.ReactElement {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Script id="js-flag" strategy="beforeInteractive">
-          {`document.documentElement.classList.add('${JS_IS_ENABLED_CLASS}');`}
+          {PREFERENCES_SCRIPT}
         </Script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <PreferencesProvider>{children}</PreferencesProvider>
+      </body>
     </html>
   );
 }
