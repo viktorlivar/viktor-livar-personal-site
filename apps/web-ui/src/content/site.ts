@@ -13,10 +13,6 @@ export const siteCopy = {
     projects: 'Projects',
     music: 'Music',
     sections: 'Sections',
-    writingIntro: 'Stories, essays, and longer works. The original texts are in Ukrainian.',
-    projectsIntro: 'Personal tools, experiments, and ideas made tangible.',
-    musicIntro: 'Recordings and musical experiments.',
-    contactIntro: 'The simplest ways to reach me and find my work elsewhere.',
     professionalWork: 'Professional work',
     visitProject: 'Visit project',
     backToWriting: 'Back to writing',
@@ -34,10 +30,6 @@ export const siteCopy = {
     projects: 'Проєкти',
     music: 'Музика',
     sections: 'Розділи',
-    writingIntro: 'Оповідання, есе та більші твори.',
-    projectsIntro: 'Особисті інструменти, експерименти та втілені ідеї.',
-    musicIntro: 'Записи та музичні експерименти.',
-    contactIntro: 'Найпростіші способи зв’язатися зі мною та знайти мої роботи.',
     professionalWork: 'Професійна діяльність',
     visitProject: 'Відкрити проєкт',
     backToWriting: 'Назад до літератури',
@@ -95,6 +87,19 @@ export const writings = [
   },
 ] as const;
 
+export type Writing = (typeof writings)[number];
+export type WritingSlug = Writing['slug'];
+
+export function getWriting(slug: WritingSlug): Writing {
+  const writing = writings.find((item) => item.slug === slug);
+
+  if (!writing) {
+    throw new Error(`Unknown writing: ${slug}`);
+  }
+
+  return writing;
+}
+
 export const projects = [
   {
     name: 'protoMeal',
@@ -135,16 +140,24 @@ export const contacts = [
     label: 'Email',
     value: 'viktor.livar.o@gmail.com',
     href: 'mailto:viktor.livar.o@gmail.com',
+    icon: '/images/pages/contacts/google.png',
   },
-  { label: 'Telegram', value: '@orangetoad', href: 'https://t.me/orangetoad' },
+  {
+    label: 'Telegram',
+    value: 't.me/orangetoad',
+    href: 'https://t.me/orangetoad',
+    icon: '/images/pages/contacts/telegram.png',
+  },
   {
     label: 'LinkedIn',
-    value: 'Viktor Livar',
+    value: 'linkedin.com/in/victor-livar',
     href: 'https://www.linkedin.com/in/victor-livar-72024a93',
+    icon: '/images/pages/contacts/linkedin.png',
   },
   {
     label: 'YouTube',
     value: 'Viktor Livar',
     href: 'https://www.youtube.com/channel/UCFd4gJ9tPD0xBlWUU4QlpjA',
+    icon: '/images/pages/contacts/youtube.png',
   },
 ] as const;

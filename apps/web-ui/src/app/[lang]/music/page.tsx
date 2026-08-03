@@ -24,7 +24,7 @@ export default async function MusicPage({
 
   return (
     <main id="main-content" className={styles.page}>
-      <PageIntro title={text.music} description={text.musicIntro} />
+      <PageIntro title={text.music} />
       <div className={styles.videoGrid}>
         {musicVideos.map((video) => (
           <div className={styles.video} key={video.id}>

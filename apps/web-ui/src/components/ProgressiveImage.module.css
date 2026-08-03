@@ -1,0 +1,44 @@
+.frame {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.frame::before {
+  position: absolute;
+  z-index: 1;
+  inset: -0.25rem;
+  content: '';
+  background-image: var(--image-placeholder);
+  background-position: center;
+  background-size: cover;
+  filter: blur(4px);
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.fill::before {
+  inset: -0.75rem;
+  filter: blur(12px);
+}
+
+.frame.fade::before {
+  transition: opacity 600ms ease;
+}
+
+.frame.loaded::before {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame.fade::before {
+    transition: none;
+  }
+}

@@ -1,7 +1,7 @@
+import ContentCard from '@/components/ContentCard';
 import PageIntro from '@/components/PageIntro';
 import { isLanguage, projects, siteCopy } from '@/content/site';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import styles from '../section.module.css';
 
@@ -25,25 +25,18 @@ export default async function ProjectsPage({
 
   return (
     <main id="main-content" className={styles.page}>
-      <PageIntro title={text.projects} description={text.projectsIntro} />
+      <PageIntro title={text.projects} />
       <div className={styles.grid}>
         {projects.map((project) => (
-          <a
-            className={styles.card}
+          <ContentCard
             href={project.href}
-            target="_blank"
-            rel="noreferrer"
+            image={project.image}
+            title={project.name}
+            description={project.description[lang]}
+            action={text.visitProject}
+            external
             key={project.name}
-          >
-            <div className={styles.image}>
-              <Image src={project.image} alt="" fill sizes="(max-width: 680px) 100vw, 400px" />
-            </div>
-            <div className={styles.cardText}>
-              <h2>{project.name}</h2>
-              <p className={styles.description}>{project.description[lang]}</p>
-              <span className={styles.action}>{text.visitProject} ↗</span>
-            </div>
-          </a>
+          />
         ))}
       </div>
     </main>

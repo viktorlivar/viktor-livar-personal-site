@@ -15,7 +15,7 @@ export default function SiteFooter({
         <nav aria-label={language === 'uk' ? 'Додаткові посилання' : 'Additional links'}>
           <Link href={`/${language}/contact`}>{text.contact}</Link>
           <a href="https://viktorlivar.com" rel="external">
-            {text.professionalWork} ↗
+            {text.professionalWork}
           </a>
         </nav>
       </div>

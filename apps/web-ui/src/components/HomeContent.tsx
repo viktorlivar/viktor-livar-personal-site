@@ -1,7 +1,8 @@
 import type { Language } from '@/content/site';
+import { getImagePlaceholder } from '@/content/image-placeholders';
 import { sectionCards, siteCopy } from '@/content/site';
-import Image from 'next/image';
 import Link from 'next/link';
+import ProgressiveImage from './ProgressiveImage';
 import ToadLogo from './ToadLogo';
 import styles from './HomeContent.module.css';
 
@@ -31,10 +32,11 @@ export default function HomeContent({
               key={section.slug}
             >
               <div className={styles.imageWrapper}>
-                <Image
+                <ProgressiveImage
                   src={section.image}
                   alt=""
                   fill
+                  placeholderDataUrl={getImagePlaceholder(section.image)}
                   sizes="(max-width: 680px) 100vw, 267px"
                 />
               </div>

@@ -1,5 +1,5 @@
 .main {
-  width: min(100% - 2rem, var(--content-width));
+  width: min(calc(100% - var(--content-gutter)), var(--content-width));
   margin-inline: auto;
   padding-top: var(--header-height);
 }
@@ -73,10 +73,6 @@
 }
 
 @media (max-width: 680px) {
-  .main {
-    width: min(100% - 1.25rem, var(--content-width));
-  }
-
   .hero {
     min-height: min(32rem, calc(62svh - var(--header-height)));
     padding-top: 2rem;
@@ -122,10 +118,6 @@
 }
 
 @media (min-width: 1600px) and (min-height: 1000px) {
-  .main {
-    width: min(100% - 3rem, 60rem);
-  }
-
   .toad {
     width: min(100%, 46rem, calc((100svh - 31rem) * 1.337));
   }

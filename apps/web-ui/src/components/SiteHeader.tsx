@@ -14,15 +14,12 @@ export default function SiteHeader({
   const { theme, toggleTheme } = usePreferences();
   const pathname = usePathname();
   const text = siteCopy[language];
-  const section = getSection(pathname);
-  const sectionLabel = section ? text[section] : null;
 
   return (
     <Header className={styles.header}>
       <nav className={styles.nav} aria-label={text.mainNavigation}>
         <Link className={styles.navLink} href={`/${language}`}>
-          <span>{text.home}</span>
-          {sectionLabel && <span className={styles.currentSection}> / {sectionLabel}</span>}
+          {text.home}
         </Link>
 
         <div className={styles.controls}>
@@ -81,10 +78,4 @@ function LanguageLink({
       {children}
     </Link>
   );
-}
-
-function getSection(pathname: string): 'writing' | 'projects' | 'music' | null {
-  const segment = pathname.split('/')[2];
-  if (segment === 'writing' || segment === 'projects' || segment === 'music') return segment;
-  return null;
 }

@@ -3,7 +3,7 @@
 }
 
 .content {
-  width: min(100% - 2rem, var(--content-width));
+  width: min(calc(100% - var(--content-gutter)), var(--content-width));
   min-height: 7rem;
   margin-inline: auto;
   display: flex;

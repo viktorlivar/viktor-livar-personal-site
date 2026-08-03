@@ -1,8 +1,10 @@
 import PageIntro from '@/components/PageIntro';
+import ProgressiveImage from '@/components/ProgressiveImage';
+import { getImagePlaceholder } from '@/content/image-placeholders';
 import { contacts, isLanguage, siteCopy } from '@/content/site';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import styles from '../section.module.css';
+import styles from './contact.module.css';
 
 export async function generateMetadata({
   params,
@@ -24,13 +26,24 @@ export default async function ContactPage({
 
   return (
     <main id="main-content" className={styles.page}>
-      <PageIntro title={text.contact} description={text.contactIntro} />
+      <PageIntro title={text.contact} />
       <div className={styles.contactList}>
         {contacts.map((contact) => (
-          <a className={styles.contactRow} href={contact.href} key={contact.label}>
-            <small>{contact.label}</small>
+          <a
+            className={styles.contactRow}
+            href={contact.href}
+            aria-label={`${contact.label}: ${contact.value}`}
+            key={contact.label}
+          >
+            <ProgressiveImage
+              containerClassName={styles.icon}
+              src={contact.icon}
+              width={32}
+              height={32}
+              placeholderDataUrl={getImagePlaceholder(contact.icon)}
+              alt=""
+            />
             <span>{contact.value}</span>
-            <span aria-hidden="true">↗</span>
           </a>
         ))}
       </div>
