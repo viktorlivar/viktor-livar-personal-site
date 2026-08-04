@@ -1,8 +1,8 @@
+import PreferencesProvider from '@/components/PreferencesProvider';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 import React from 'react';
-import PreferencesProvider from '@/components/PreferencesProvider';
 import './globals.css';
 
 const geistSans = Geist({
@@ -17,17 +17,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://viktorlivar.net'),
-  title: {
-    default: 'Viktor Livar',
-    template: '%s | Viktor Livar',
-  },
-  // description:
-  //   'Hands-on full-stack expertise to take your idea from concept to market-ready MVP quickly and efficiently.',
   openGraph: {
     type: 'website',
     url: 'https://viktorlivar.net/',
     title: 'Viktor Livar',
-    // description: 'AWS • Node.js • React • PostgreSQL. Consulting and Fractional CTO services.',
     siteName: 'Viktor Livar',
     images: [
       {
@@ -43,7 +36,6 @@ export const metadata: Metadata = {
     creator: '@Viktor21663863',
     site: '@Viktor21663863',
     title: 'Viktor Livar',
-    // description: 'Hands-on full-stack expertise to ship MVPs fast.',
     images: ['/og-image.jpg'],
   },
   alternates: {

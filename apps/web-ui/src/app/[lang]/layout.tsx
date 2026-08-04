@@ -15,7 +15,14 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return { other: { 'content-language': lang } };
+  const siteName = lang === 'uk' ? 'Віктор Лівар' : 'Viktor Livar';
+  return {
+    title: {
+      default: siteName,
+      template: `%s | ${siteName}`,
+    },
+    other: { 'content-language': lang },
+  };
 }
 
 export default async function LanguageLayout({

@@ -10,7 +10,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   return {
-    title: lang === 'uk' ? 'Віктор Лівар' : 'Viktor Livar',
     alternates: {
       canonical: `/${lang}`,
       languages: { en: '/en', uk: '/uk' },
