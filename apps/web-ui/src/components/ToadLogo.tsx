@@ -5,7 +5,6 @@ import { useEffect, useRef } from 'react';
 import styles from './ToadLogo.module.css';
 
 const MAX_EYE_OFFSET = 18;
-const POINTER_DEAD_ZONE = 42;
 
 interface Point {
   x: number;
@@ -15,6 +14,7 @@ interface Point {
 export default function ToadLogo({ alt }: Readonly<{ alt: string }>): React.ReactElement {
   const leftEyeRef = useRef<HTMLSpanElement>(null);
   const rightEyeRef = useRef<HTMLSpanElement>(null);
+  const eyesRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
   const pointerRef = useRef<Point | null>(null);
 
@@ -24,8 +24,10 @@ export default function ToadLogo({ alt }: Readonly<{ alt: string }>): React.Reac
       const eyes = [leftEyeRef.current, rightEyeRef.current];
 
       eyes.forEach((eye) => {
-        if (!eye) return;
-        const position = pointer ? getEyeOffset(eye, pointer) : { x: 0, y: 0 };
+        if (!eye || !eyesRef.current) return;
+        const position = pointer
+          ? getEyeOffset(eye, eyesRef.current, pointer)
+          : { x: 0, y: 0 };
         eye.style.setProperty('--eye-x', `${position.x}px`);
         eye.style.setProperty('--eye-y', `${position.y}px`);
       });
@@ -76,7 +78,7 @@ export default function ToadLogo({ alt }: Readonly<{ alt: string }>): React.Reac
           priority
           alt={alt}
         />
-        <div className={styles.eyes} aria-hidden="true">
+        <div ref={eyesRef} className={styles.eyes} aria-hidden="true">
           <span ref={leftEyeRef} className={`${styles.eye} ${styles.leftEye}`} />
           <span ref={rightEyeRef} className={`${styles.eye} ${styles.rightEye}`} />
         </div>
@@ -97,16 +99,25 @@ export default function ToadLogo({ alt }: Readonly<{ alt: string }>): React.Reac
   );
 }
 
-function getEyeOffset(eye: HTMLElement, pointer: Point): Point {
+function getEyeOffset(eye: HTMLElement, eyesArea: HTMLElement, pointer: Point): Point {
+  if (isInsideRect(eyesArea.getBoundingClientRect(), pointer)) return { x: 0, y: 0 };
+
   const bounds = eye.getBoundingClientRect();
   const deltaX = pointer.x - (bounds.left + bounds.width / 2);
   const deltaY = pointer.y - (bounds.top + bounds.height / 2);
   const distance = Math.hypot(deltaX, deltaY);
 
-  if (distance < POINTER_DEAD_ZONE) return { x: 0, y: 0 };
-
   return {
     x: (deltaX / distance) * MAX_EYE_OFFSET,
     y: (deltaY / distance) * MAX_EYE_OFFSET,
   };
+}
+
+function isInsideRect(bounds: DOMRect, pointer: Point): boolean {
+  return (
+    pointer.x >= bounds.left &&
+    pointer.x <= bounds.right &&
+    pointer.y >= bounds.top &&
+    pointer.y <= bounds.bottom
+  );
 }

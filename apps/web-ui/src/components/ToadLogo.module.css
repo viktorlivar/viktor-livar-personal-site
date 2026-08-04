@@ -36,10 +36,10 @@
 .eyes {
   position: absolute;
   z-index: 2;
-  top: 1%;
-  left: 34%;
-  width: 38.3%;
-  height: 22%;
+  top: 3%;
+  left: 41%;
+  width: 24.3%;
+  height: 18%;
   pointer-events: none;
 }
 
@@ -57,13 +57,13 @@
 }
 
 .leftEye {
-  top: 42%;
-  left: 30%;
+  top: 41%;
+  left: 20%;
 }
 
 .rightEye {
-  top: 40%;
-  right: 32%;
+  top: 39%;
+  right: 22%;
 }
 
 .mobileToad {
