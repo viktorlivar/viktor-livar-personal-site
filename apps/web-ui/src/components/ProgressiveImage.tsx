@@ -7,7 +7,7 @@ import type { CSSProperties } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import styles from './ProgressiveImage.module.css';
 
-const FADE_DELAY_MS = 120;
+const FADE_DELAY_MS = 30;
 
 interface ProgressiveImageProps extends ImageProps {
   containerClassName?: string;
