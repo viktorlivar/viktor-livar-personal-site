@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|ts|tsx|json)\"",
-    "upload": "aws s3 sync out/ s3://v2.viktorlivar.net --delete",
+    "upload": "aws s3 sync out/ s3://viktorlivar.net --delete",
     "invalidate": "aws cloudfront create-invalidation --distribution-id EL5C1TDCEREUU --paths \"/*\"",
     "deploy": "pnpm build && pnpm upload && pnpm invalidate"
   },

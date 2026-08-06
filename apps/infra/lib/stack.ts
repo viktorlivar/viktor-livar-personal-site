@@ -1,14 +1,14 @@
 import * as cdk from 'aws-cdk-lib';
-// import * as acm from 'aws-cdk-lib/aws-certificatemanager';
+import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 import * as cloudfront from 'aws-cdk-lib/aws-cloudfront';
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins';
-// import * as route53 from 'aws-cdk-lib/aws-route53';
-// import { CloudFrontTarget, Route53RecordTarget } from 'aws-cdk-lib/aws-route53-targets';
+import * as route53 from 'aws-cdk-lib/aws-route53';
+import { CloudFrontTarget, Route53RecordTarget } from 'aws-cdk-lib/aws-route53-targets';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 
-const DOMAIN_NAME = 'v2.viktorlivar.net';
-// const HOSTED_ZONE_ID = 'Z01675341RIGAFCPY8LBH';
+const DOMAIN_NAME = 'viktorlivar.net';
+const HOSTED_ZONE_ID = 'Z05145812JQCHOAI5ES3D';
 
 export class MainStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -37,20 +37,20 @@ export class MainStack extends cdk.Stack {
       },
     });
 
-    // const hostedZone = route53.HostedZone.fromHostedZoneAttributes(this, 'HostedZone', {
-    //   hostedZoneId: HOSTED_ZONE_ID,
-    //   zoneName: DOMAIN_NAME,
-    // });
+    const hostedZone = route53.HostedZone.fromHostedZoneAttributes(this, 'HostedZone', {
+      hostedZoneId: HOSTED_ZONE_ID,
+      zoneName: DOMAIN_NAME,
+    });
 
-    // const certificate = new acm.Certificate(this, 'DistributionCertificate', {
-    //   domainName: DOMAIN_NAME,
-    //   validation: acm.CertificateValidation.fromDns(hostedZone),
-    // });
+    const certificate = new acm.Certificate(this, 'DistributionCertificate', {
+      domainName: DOMAIN_NAME,
+      validation: acm.CertificateValidation.fromDns(hostedZone),
+    });
 
     const distribution = new cloudfront.Distribution(this, 'CloudfrontDistribution', {
       comment: `Distribution for viktor-livar-personal-site`,
-      // domainNames: [DOMAIN_NAME],
-      // certificate,
+      domainNames: [DOMAIN_NAME],
+      certificate,
       sslSupportMethod: cloudfront.SSLMethod.SNI,
       defaultRootObject: 'index.html',
       defaultBehavior: {
@@ -70,21 +70,16 @@ export class MainStack extends cdk.Stack {
       ],
     });
 
-    // const route53Record = new route53.ARecord(this, 'Route53Record', {
-    //   recordName: DOMAIN_NAME,
-    //   zone: hostedZone,
-    //   target: route53.RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
-    // });
+    const route53Record = new route53.ARecord(this, 'Route53Record', {
+      recordName: DOMAIN_NAME,
+      zone: hostedZone,
+      target: route53.RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+    });
 
-    // new route53.ARecord(this, 'Route53RecordRedirect', {
-    //   recordName: `www.${DOMAIN_NAME}`,
-    //   zone: hostedZone,
-    //   target: route53.RecordTarget.fromAlias(new Route53RecordTarget(route53Record)),
-    // });
-
-    new cdk.CfnOutput(this, 'CloudFrontURL', {
-      value: `https://${distribution.distributionDomainName}`,
-      description: 'URL to access the deployed site',
+    new route53.ARecord(this, 'Route53RecordRedirect', {
+      recordName: `www.${DOMAIN_NAME}`,
+      zone: hostedZone,
+      target: route53.RecordTarget.fromAlias(new Route53RecordTarget(route53Record)),
     });
   }
 }

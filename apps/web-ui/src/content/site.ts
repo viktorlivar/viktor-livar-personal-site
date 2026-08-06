@@ -138,9 +138,9 @@ export const musicVideos = [
 export const contacts = [
   {
     label: 'Email',
-    value: 'viktor.livar.o@gmail.com',
-    href: 'mailto:viktor.livar.o@gmail.com',
-    icon: '/images/pages/contacts/google.png',
+    value: 'contact@viktorlivar.com',
+    href: 'mailto:contact@viktorlivar.com',
+    icon: '/images/pages/contacts/email.png',
   },
   {
     label: 'Telegram',

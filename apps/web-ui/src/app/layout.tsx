@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: 'Viktor Livar',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Viktor Livar',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     creator: '@Viktor21663863',
     site: '@Viktor21663863',
     title: 'Viktor Livar',
-    images: ['/og-image.jpg'],
+    images: ['/images/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://viktorlivar.net/',
