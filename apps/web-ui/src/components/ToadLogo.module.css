@@ -1,0 +1,89 @@
+.root {
+  width: min(100%, 42rem);
+  margin-inline: auto;
+}
+
+.desktopToad,
+.mobileToad {
+  position: relative;
+  isolation: isolate;
+}
+
+.desktopToad {
+  display: none;
+}
+
+.image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.shadow {
+  position: absolute;
+  z-index: 0;
+  left: 3%;
+  right: 3%;
+  bottom: 0%;
+  height: 29%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, var(--toad-shadow) 0%, transparent 78%);
+  filter: blur(5px);
+}
+
+.eyes {
+  position: absolute;
+  z-index: 2;
+  top: 3%;
+  left: 41%;
+  width: 24.3%;
+  height: 18%;
+  pointer-events: none;
+}
+
+.eye {
+  --eye-x: 0px;
+  --eye-y: 0px;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #111;
+  transform: translate(var(--eye-x), var(--eye-y));
+  transition: transform 80ms linear;
+  will-change: transform;
+}
+
+.leftEye {
+  top: 41%;
+  left: 20%;
+}
+
+.rightEye {
+  top: 39%;
+  right: 22%;
+}
+
+.mobileToad {
+  width: min(100%, 22rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 700px) {
+  .desktopToad {
+    display: block;
+  }
+
+  .mobileToad {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eye {
+    transform: none !important;
+    transition: none;
+  }
+}

@@ -1,0 +1,9 @@
+/* Add styles specific to this writing here. */
+.content {
+  display: flow-root;
+}
+
+.placeholder {
+  color: var(--foreground-muted);
+  font-style: italic;
+}

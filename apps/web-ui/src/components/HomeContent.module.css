@@ -1,0 +1,131 @@
+.main {
+  width: min(calc(100% - var(--content-gutter)), var(--content-width));
+  margin-inline: auto;
+  padding-top: var(--header-height);
+}
+
+.hero {
+  min-height: min(68rem, calc(100vh - var(--header-height)));
+  display: grid;
+  place-items: center;
+  padding-block: clamp(3rem, 8vh, 7rem) 2rem;
+}
+
+.toad {
+  width: 100%;
+}
+
+.sections {
+  padding-block: 2rem clamp(7rem, 15vw, 11rem);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 3px;
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 1.48;
+  overflow: hidden;
+  background: var(--surface-raised);
+}
+
+.imageWrapper img {
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+/* .card:hover img {
+  transform: scale(1.08);
+} */
+
+.card > span {
+  display: block;
+  padding: 0.9rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 680px) {
+  .hero {
+    min-height: min(32rem, calc(62svh - var(--header-height)));
+    padding-top: 2rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    max-width: 30rem;
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 681px) and (min-height: 760px) {
+  .main {
+    height: calc(100svh - var(--footer-height));
+    min-height: 0;
+    padding-top: calc(var(--header-height) + 1rem);
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(1rem, 2vh, 1.5rem);
+    overflow: hidden;
+  }
+
+  .hero {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .toad {
+    width: min(100%, 42rem, calc((100svh - 29.5rem) * 1.337));
+  }
+
+  .sections {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1600px) and (min-height: 1000px) {
+  .toad {
+    width: min(100%, 46rem, calc((100svh - 31rem) * 1.337));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .imageWrapper img {
+    transition: none;
+  }
+}

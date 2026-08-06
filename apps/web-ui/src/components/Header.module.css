@@ -1,0 +1,21 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-height: var(--header-height);
+  z-index: var(--header-z-index);
+  transform: translateY(0);
+  transition: transform 240ms ease;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    transition: none;
+  }
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+}

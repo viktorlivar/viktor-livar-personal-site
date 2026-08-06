@@ -1,0 +1,16 @@
+.content {
+  display: flow-root;
+}
+
+.hard-question-where-to-buy {
+  margin-bottom: 1rem;
+  background-color: #7978783f;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 3rem;
+}
+
+.hard-question-where-to-buy > a {
+  font-weight: 500;
+}

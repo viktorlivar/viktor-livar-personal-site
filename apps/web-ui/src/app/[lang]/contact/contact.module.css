@@ -1,0 +1,51 @@
+.page {
+  width: min(calc(100% - var(--content-gutter)), var(--content-width));
+  min-height: calc(100vh - var(--header-height));
+  margin-inline: auto;
+  padding-top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page > header {
+  width: 100%;
+  text-align: center;
+}
+
+.contactList {
+  width: fit-content;
+  max-width: 100%;
+  padding-bottom: clamp(6rem, 12vw, 10rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contactRow {
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--foreground-muted);
+}
+
+.icon {
+  flex: 0 0 auto;
+  border-radius: 4px;
+}
+
+.contactRow span {
+  overflow-wrap: anywhere;
+}
+
+.contactRow:hover,
+.contactRow:focus-visible {
+  color: var(--accent);
+}
+
+.contactRow:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
