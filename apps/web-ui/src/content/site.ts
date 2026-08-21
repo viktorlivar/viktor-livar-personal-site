@@ -102,12 +102,12 @@ export function getWriting(slug: WritingSlug): Writing {
 
 export const projects = [
   {
-    name: 'protoMeal',
-    href: 'https://protomeal.com',
-    image: '/images/pages/projects/protomeal.jpg',
+    name: 'Cobalt Cat',
+    href: 'https://cobaltcat.app',
+    image: '/images/pages/projects/cobaltcat.png',
     description: {
-      en: 'An online tool for monitoring, logging, and analyzing macronutrients and calories.',
-      uk: 'Онлайн-інструмент для контролю, обліку та аналізу макронутрієнтів і калорій.',
+      en: 'A compact, modern food, nutrition, and body-weight tracker with fast daily logging and long-term progress views.',
+      uk: 'Компактний сучасний трекер харчування, нутрієнтів і ваги зі швидким щоденним обліком та аналізом прогресу.',
     },
   },
   {
@@ -126,6 +126,15 @@ export const projects = [
     description: {
       en: 'A tool for defining goals, breaking them into manageable parts, and tracking progress.',
       uk: 'Інструмент для визначення цілей, поділу їх на досяжні частини та відстеження прогресу.',
+    },
+  },
+  {
+    name: 'protoMeal',
+    href: 'https://protomeal.com',
+    image: '/images/pages/projects/protomeal.jpg',
+    description: {
+      en: 'An online tool for monitoring, logging, and analyzing macronutrients and calories.',
+      uk: 'Онлайн-інструмент для контролю, обліку та аналізу макронутрієнтів і калорій.',
     },
   },
 ] as const;
