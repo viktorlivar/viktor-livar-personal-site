@@ -13,6 +13,8 @@ const imagePlaceholders: Readonly<Record<string, string>> = {
     'data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABwBACdASoZABEAPwF2slQrJySjKAgBYCAJYwDGigAADF+lqdhHVNQWmdJTAAD+P/9wqNuMP/6NlgzpLXvMXkRNHNGakhLLkllnkaM5M0F4cIP1hWOirudAX+sbXswmbRjHgqsggrg2/8HO4Sdvla2u7nX2QbOLGgpMM5vwXEV+FBNK3YmaFYZzknMLnOoob/0n4yQZnbsiN54lIAA=',
   '/images/pages/projects/cobaltcat.png':
     'data:image/webp;base64,UklGRigBAABXRUJQVlA4IBwBAAAQBwCdASoZABUAPwFysFIrJqSiqAqpYCAJbACdMoR5mP30O60xXW0Nple9AESMGCT8R1UfUp6cBLwCjwiL+FY5gAD+RVpSQO1MMozLmMkpINcJXZO157/S5toqzIE6rzzeXT3jt+wGqudRR+aiC+0drcOfVxEH+q+soGYtCMyTX/dpIp5Hyn7Z/G7QnbM+rl04hKeCUCGwP5DBZDurhrK+jNorvS0poWd9WS3f3buO94Q9aCf5xIw8oXGYQmmCrc7RY6XClRPUFxLZO0qzGM8KJY4BvcNf5eLR/JyFpqQ/fQYP9VutuH4LFBX3mp54MDSGW/3n09TTnHyqO7tQcm3y4ldZ+za6isviVD4B7JzeOjAeXbVA1XHHQAAAAA==',
+  '/images/pages/projects/longview.png':
+    'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoYAA8APzmGuVOvKSWisAgB4CcJaQAAW+i/IyIMnK4g8eAAAP7i5SsB0+Vry+rGqHJFHShgq66se09jxpHmC4S6vUxhXJe7KkacSobi3t+t7H5fTgAAAA==',
   '/images/pages/projects/goalcraft.png':
     'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwBACdASoZABEAPwF0sVOrJqQiqAgBYCAJQBdgAiJHRvUsIvN2EiOB5cAA/u1JHxNPJ7eaAxuq+wHpvTsIw5dKrhusFicfr0HpFOQ0MsjEx5luMIOrdXxq/FDB1yPUI0VOFx5xP0cNLG7Ct+4I6Ww9Ds9YFIAA',
   '/images/pages/projects/lifetimer.jpg':

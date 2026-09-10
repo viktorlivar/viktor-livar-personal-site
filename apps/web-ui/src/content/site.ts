@@ -111,6 +111,15 @@ export const projects = [
     },
   },
   {
+    name: 'LongView',
+    href: 'https://mylongview.space/',
+    image: '/images/pages/projects/longview.png',
+    description: {
+      en: 'A personal timeline for visualizing different periods on a single time axis.',
+      uk: 'Персональний таймлайн для візуалізації різних періодів — на єдиній часовій шкалі.',
+    },
+  },
+  {
     name: 'lifetimer',
     href: 'https://yourlifetimer.com',
     image: '/images/pages/projects/lifetimer.jpg',
