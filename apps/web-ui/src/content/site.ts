@@ -116,7 +116,7 @@ export const projects = [
     image: '/images/pages/projects/longview.png',
     description: {
       en: 'A personal timeline for visualizing different periods on a single time axis.',
-      uk: 'Персональний таймлайн для візуалізації різних періодів — на єдиній часовій шкалі.',
+      uk: 'Персональний таймлайн для візуалізації різних періодів на єдиній часовій шкалі.',
     },
   },
   {
